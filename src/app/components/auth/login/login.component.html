@@ -1,0 +1,19 @@
+<div class="grid h-screen place-items-center" style="background: rgb(249, 191, 167); background: linear-gradient(45deg,  rgb(211, 105, 149)  0%, rgb(245, 164, 101) 100%);">
+    <form *ngIf="formGroup" [formGroup]="formGroup" class="text-center">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="username">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="password">
+      </mat-form-field>
+      <br>
+      <div class="flex items-center justify-center">
+        <button mat-flat-button color="primary" (click)="onFormSubmit()" type="submit"> LOGIN </button>
+      </div>
+      <br>
+      <p>don't have an account? <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/register">register here</a></p>
+    </form>
+  </div>
