@@ -19,6 +19,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  public getLoggedInUsername(): string | null {
+    if (this.token != null) {
+      const decodedToken = this.jwtHelper.decodeToken(this.token);
+      if (decodedToken != null && decodedToken.sub != null) {
+        return decodedToken.sub;
+      }
+    }
+    return null;
+  }
+  
   
   public register(user: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/hn-user/auth/register`, user)
