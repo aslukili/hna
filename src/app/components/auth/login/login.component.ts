@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit{
 
     // TODO call login method here
     console.log(this.formGroup.value);
+    console.log("logged in");
     this.onLogin(this.formGroup.value);
   }
 

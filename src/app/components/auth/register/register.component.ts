@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // TODO call login method here
+    // TODO call register method here
     console.log(this.formGroup.value);
     this.onRegister(this.formGroup.value)
   }

@@ -56,6 +56,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     MatNativeDateModule,
     MatMenuModule,
     RouterModule,
+    RouterModule.forRoot([]), // Add RouterModule here
     MatPaginatorModule
   ],
   providers: [

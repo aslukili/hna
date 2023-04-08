@@ -16,8 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (request.url.includes(`${this.apiUrl}/auth/login`)){ return next.handle(request); }
-    if (request.url.includes(`${this.apiUrl}/auth/register`)){ return next.handle(request); }
+    if (request.url.includes(`${this.apiUrl}/hn-user/auth/login`)){ return next.handle(request); }
+    if (request.url.includes(`${this.apiUrl}/hn-user/auth/register`)){ return next.handle(request); }
 
     this.authService.loadToken();
     const token = this.authService.getToken();
