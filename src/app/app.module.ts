@@ -27,6 +27,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { SubmitFormComponent } from './components/submit-form/submit-form.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
     PostDetailsComponent,
     CommentComponent,
     ProfileComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    SubmitFormComponent
   ],
   imports: [
     BrowserModule,

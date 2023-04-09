@@ -8,57 +8,46 @@
             </li>
             <li>
                 <a href="#" class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline">
-                    <i class="fas fa-home"></i><span>new </span>
+                    <i class="fas fa-home"></i><span>new |</span>
                 </a>
             </li>
-            <span class="text-sm">|</span>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span >threads</span></a>
+                    <i class="fas fa-hotel"></i><span >threads |</span></a>
             </li>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span >past</span></a>
+                    <i class="fas fa-hotel"></i><span >past |</span></a>
             </li>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span >comments</span></a>
+                    <i class="fas fa-hotel"></i><span >comments |</span></a>
             </li>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span>ask</span></a>
+                    <i class="fas fa-hotel"></i><span>ask |</span></a>
             </li>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span>show</span></a>
+                    <i class="fas fa-hotel"></i><span>show |</span></a>
             </li>
             <li>
                 <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span>jobs</span></a>
+                    <i class="fas fa-hotel"></i><span>jobs |</span></a>
             </li>
             <li>
-                <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline " href="#">
+                <a routerLink="/submit" class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline ">
                     <i class="fas fa-hotel"></i><span>submit</span></a>
             </li>
-            
-            <!-- <li>
-                <div [matMenuTriggerFor]="account" class="cursor-pointer">
-                    <a class="px-3 py-4 flex items-center text-xs uppercase font-bold text-slate-700 hover:underline lg:py-2">
-                        <i class="fas fa-user"></i><span class="ml-1">Account</span>
-                    </a>
-                </div>
-                <mat-menu #account>
-                    <button mat-menu-item routerLink="/login" *ngIf="authService.isUserLoggedIn() == false">Log In</button>
-                    <button *ngIf="authService.isUserLoggedIn() == false" mat-menu-item routerLink="/register">Register</button>
-                    <button *ngIf="authService.isUserLoggedIn() == true" mat-menu-item routerLink="/logout">Sign Out</button>
-                </mat-menu>
-            </li> -->
         </ul>
     </div>
     <div class="cursor-pointer flex items-center text-sm text-slate-800 hover:underline">
-        <a class="flex flex-row list-none ml-auto">
-            login
-            <!-- TODO: account if user logged in -->
+        <a routerLink="/profile" class="flex flex-row list-none ml-auto" *ngIf="isLoggedIn">
+          {{ username }}
         </a>
-    </div>
+        <a routerLink="/login" class="flex flex-row list-none ml-auto" *ngIf="!isLoggedIn">
+          login
+        </a>
+      </div>
+      
 </nav>

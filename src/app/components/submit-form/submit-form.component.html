@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="max-w-lg mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Submit a New Post</h2>
+    <form *ngIf="formGroup" [formGroup]="formGroup" class="w-full">
+      <div class="mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Title</mat-label>
+            <input formControlName="title" matInput placeholder="title">
+          </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Url</mat-label>
+            <input formControlName="url" matInput placeholder="url">
+          </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea formControlName="description" matInput placeholder="Enter post description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" (click)="onFormSubmit()" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Submit
+        </button>
+      </div>
+    </form>
+    <div class="text-sm text-gray-600 mt-4">
+      * Leave url blank to submit a question for discussion. If there is no url, text will appear at the top of the thread. If there is a url, text is optional.
+    </div>
+  </div>
+  

@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { HomeComponent } from './components/home/home.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SubmitFormComponent } from './components/submit-form/submit-form.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
   },
   { path: 'posts/:id', component: PostDetailsComponent},
   { path: 'users/:id', component: PostDetailsComponent},
+  { path: 'submit', component: SubmitFormComponent},
+
 
 ];
 

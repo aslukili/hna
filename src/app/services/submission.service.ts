@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Comment } from '../model/Comment';
 import { CommentRequest } from '../model/dto/CommentRequest';
+import { SubmissionRequest } from '../model/dto/SubmissionRequest';
 import { Post } from '../model/Post';
 
 @Injectable({
@@ -29,5 +30,9 @@ export class SubmissionService {
 
   getPost(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/hn-post/submissions/${id}`);
+  }
+
+  submitPost(submissionRequest: SubmissionRequest): Observable<Post> {
+    return this.http.post<Post>(`${this.apiUrl}/hn-post/submissions`, submissionRequest);
   }
 }
