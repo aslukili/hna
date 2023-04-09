@@ -11,6 +11,7 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentComponent implements OnInit{
   comments: Comment[] = [];
+  showReply: boolean = false;
 
 
   constructor(

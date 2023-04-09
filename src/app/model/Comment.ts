@@ -5,9 +5,11 @@ export interface Comment {
     post: string,
     parent: string | null,
     children: string[] | null,
+    level: number,
     score: number,
     upVotes: number,
     downVotes: number,
     notDeleted: boolean,
-    notUpdated: boolean
+    notUpdated: boolean,
+    showReply?: boolean
 }

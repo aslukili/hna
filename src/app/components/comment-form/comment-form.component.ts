@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,8 @@ import { SubmissionService } from 'src/app/services/submission.service';
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.css']
 })
-export class CommentFormComponent {
+export class CommentFormComponent implements OnInit {
+  @Input() parent: string | null = null;
   formGroup: FormGroup | undefined;
   private subscriptions: Subscription[] = [];
 
@@ -27,14 +28,12 @@ export class CommentFormComponent {
 
   }
 
-
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       content: [undefined, Validators.required],
-      authorUsername: [undefined]
-    })
+      authorUsername: [undefined],
+    });
   }
-
 
   onFormSubmit():void {
     // validate the form
@@ -51,23 +50,28 @@ export class CommentFormComponent {
   }
 
   public onPostComment(commentRequest: CommentRequest): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id === null) {
+    const postId = this.route.snapshot.paramMap.get('id');
+    if (postId === null) {
       return;
     }
+
+    if (this.parent !== null) {
+      commentRequest.parent = this.parent;
+    }
+
     this.subscriptions.push(
-      this.postService.postComment(id, commentRequest).subscribe({
+      this.postService.postComment(postId, commentRequest).subscribe({
         next: (response: Comment) => {
           console.log(response);
           console.log("worked");
-          this.router.navigateByUrl(`posts/${id}`);
+          this.router.navigateByUrl(`posts/${postId}`);
         },
         error: (error: HttpErrorResponse) => {
           console.error("an error happened");
           console.log(error);
         }
       })
-    )
+    );
   }
 
   public onFormReset(): void {

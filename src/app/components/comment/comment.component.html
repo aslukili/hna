@@ -1,27 +1,36 @@
 <div class="bg-white shadow rounded-md p-3 mb-1 text-sm">
-<div  *ngFor="let comment of comments" >
-  <div class="flex text-gray-500 mb-2">
-    <div class="flex mr-2">
-      <button>
-        <mat-icon>keyboard_arrow_up</mat-icon>
-      </button>
-      <button>
-        <mat-icon>keyboard_arrow_down</mat-icon>
-      </button>
+  <div *ngFor="let comment of comments" [style.marginLeft]="comment.level * 2.5 + 'rem'">
+    <div class="flex text-gray-500 mb-2">
+      <div class="flex mr-2">
+        <button>
+          <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+        <button>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+      <div class="flex items-center text-xs text-gray-500 mb-2">
+        <div class="mr-1">{{ comment.authorUsername }} 3 hours ago |</div>
+        <a href="#" class="text-gray-500 hover:text-gray-700"
+          >next | collapse</a
+        >
+      </div>
     </div>
-    <div class="flex items-center text-xs text-gray-500 mb-2">
-      <div class="mr-1">{{ comment.authorUsername }} 3 hours ago |</div>
-      <a href="#" class="text-gray-500 hover:text-gray-700">next | collapse</a>
-    </div>
-  </div>
-  <div class="text-gray-500 mb-2 ml-1">
-    <div class="ml-10 mr-1">
-      <div>{{comment.content}}</div>
-      <div>
-        <button class="bg-gray-500 text-white py-1 px-3 rounded mt-1">Reply</button>
+    <div class="text-gray-500 mb-2 ml-1">
+      <div class="ml-10 mr-1">
+        <div>{{ comment.content }}</div>
+        <div class="text-xs">
+          <!-- Show text area only if showReply is true -->
+          <app-comment-form *ngIf="comment.showReply" [parent]="comment.id"></app-comment-form>
+          <!-- Clicking 'Reply' button sets showReply to true -->
+          <a
+            class="text-gray-700 underline mt-3"
+            (click)="comment.showReply = !comment.showReply"
+          >
+            {{ comment.showReply ? "Cancel" : "Reply" }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
