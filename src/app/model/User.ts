@@ -6,5 +6,6 @@ export interface User {
     karma: number,
     role: string,
     about: string,
-    // TODO: add followers and followings
+    followers: User[],
+    following: User[],
 }

@@ -17,4 +17,7 @@ export class UserService {
     return this.http.get<User>(this.apiUrl+'/hn-user/profile');
   }
 
+  getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(this.apiUrl+'/hn-user/users/'+username);
+  }
 }

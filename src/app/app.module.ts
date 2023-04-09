@@ -28,6 +28,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { SubmitFormComponent } from './components/submit-form/submit-form.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SubmitFormComponent } from './components/submit-form/submit-form.compon
     CommentComponent,
     ProfileComponent,
     CommentFormComponent,
-    SubmitFormComponent
+    SubmitFormComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

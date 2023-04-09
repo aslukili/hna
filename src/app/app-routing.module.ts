@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SubmitFormComponent } from './components/submit-form/submit-form.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   { path: 'posts/:id', component: PostDetailsComponent},
-  { path: 'users/:id', component: PostDetailsComponent},
+  { path: 'users/:username', component: UserProfileComponent},
   { path: 'submit', component: SubmitFormComponent},
 
 

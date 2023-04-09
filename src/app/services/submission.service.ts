@@ -35,4 +35,8 @@ export class SubmissionService {
   submitPost(submissionRequest: SubmissionRequest): Observable<Post> {
     return this.http.post<Post>(`${this.apiUrl}/hn-post/submissions`, submissionRequest);
   }
+
+  getPostsOfUser(username: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.apiUrl}/hn-post/submissions/user/${username}`);
+  }
 }
