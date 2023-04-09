@@ -30,6 +30,7 @@ export class AuthService {
   }
   
   
+  
   public register(user: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/hn-user/auth/register`, user)
   }

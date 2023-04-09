@@ -32,8 +32,9 @@
                     <i class="fas fa-hotel"></i><span>show |</span></a>
             </li>
             <li>
-                <a class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" href="#">
-                    <i class="fas fa-hotel"></i><span>jobs |</span></a>
+                <a routerLink="/notification" class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline" *ngIf="isLoggedIn">
+                    notification |
+                </a>
             </li>
             <li>
                 <a routerLink="/submit" class="px-1 py-1 flex items-center text-sm text-slate-800 hover:underline ">

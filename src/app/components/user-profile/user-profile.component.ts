@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit{
+  following = false;
   user: User | undefined;
   posts: Post[] = [];
 
@@ -22,9 +23,18 @@ export class UserProfileComponent implements OnInit{
     ) { }
 
     ngOnInit(): void {
+      const username = this.route.snapshot.paramMap.get('username');
+
+      // Check if the authenticated user is following the user whose profile is being viewed
+      this.userService.getLoggedInUser().subscribe(
+        (authUser) => {
+          this.following = authUser.following.some((u) => u.username === username);
+        }
+      );
       this.getUserInfo();
       this.getUserPosts();
     }
+
 
     getUserInfo(): void {
 const username = this.route.snapshot.paramMap.get('username');
@@ -64,4 +74,28 @@ const username = this.route.snapshot.paramMap.get('username');
       });
     }
 
+    followUser(userId: number): void {
+      this.userService.followUser(userId).subscribe({
+        next: () => {
+          this.following = true;
+        console.log("followed user")
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    }
+    
+    unfollowUser(userId: number): void {
+      this.userService.unfollowUser(userId).subscribe({
+        next: () => {
+          console.log("unfollowed user")
+          this.following = false;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    }
+    
 }

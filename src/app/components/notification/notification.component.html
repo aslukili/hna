@@ -1,0 +1,16 @@
+
+  <app-header></app-header>
+<div class="max-w-lg mx-auto">
+    <div *ngFor="let notification of notifications" class="flex items-center p-4 bg-white shadow rounded-lg">
+        <div class="ml-4 flex-1">
+      <p class="font-medium">{{ notification.message}}</p>
+          <p class="text-sm text-gray-500">{{notification.sentAt | date}}</p>
+        </div>
+        <div class="flex-shrink-0">
+            <!-- only show this button if the notification is not read -->
+            <button type="submit" *ngIf="notification.isRead != true"  class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                mark as read
+              </button>
+        </div>
+      </div>    
+  </div>

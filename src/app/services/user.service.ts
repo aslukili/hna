@@ -20,4 +20,13 @@ export class UserService {
   getUserByUsername(username: string): Observable<User> {
     return this.http.get<User>(this.apiUrl+'/hn-user/users/'+username);
   }
+
+
+  followUser(userId: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`/hn-user/users/${userId}/follow`, {});
+  }
+
+  unfollowUser(userId: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`/hn-user/users/${userId}/unfollow`, {});
+  }
 }
