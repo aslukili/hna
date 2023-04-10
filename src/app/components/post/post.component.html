@@ -2,10 +2,10 @@
     <div class="flex  text-gray-500 mb-2">
       <div class="mr-2">#{{ i + 1 }}</div>
       <div class="flex mr-2">
-        <button>
+        <button (click)="upvotePost(post.id)">
           <mat-icon>keyboard_arrow_up</mat-icon>
         </button>
-        <button>
+        <button (click)="downvotePost(post.id)">
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
       </div>

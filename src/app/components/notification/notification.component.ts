@@ -36,4 +36,16 @@ export class NotificationComponent implements OnInit {
     });
   }
 
+  readNotification(notificationId: number): void {
+    this.notificationService.readNotification(notificationId).subscribe({
+      next: (notification: Notification) => {
+        console.log("readed");
+        console.log(notification);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log("error");
+        console.error(error);
+      }
+    })
+  }
 }

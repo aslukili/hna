@@ -5,6 +5,7 @@ import { environment } from 'src/environment/environment';
 import { Comment } from '../model/Comment';
 import { CommentRequest } from '../model/dto/CommentRequest';
 import { SubmissionRequest } from '../model/dto/SubmissionRequest';
+import { VoteRequest } from '../model/dto/VoteRequest';
 import { Post } from '../model/Post';
 
 @Injectable({
@@ -39,4 +40,10 @@ export class SubmissionService {
   getPostsOfUser(username: string): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.apiUrl}/hn-post/submissions/user/${username}`);
   }
+
+
+  vote(voteRequest: VoteRequest): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/hn-post/votes`, voteRequest);
+  }
+
 }

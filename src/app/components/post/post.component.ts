@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/Post';
 import {Router} from "@angular/router";
 import {SubmissionService} from "../../services/submission.service";
+import { AuthService } from 'src/app/services/auth.service';
+import { VoteRequest } from 'src/app/model/dto/VoteRequest';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +17,8 @@ export class PostComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private postService: SubmissionService
+    private postService: SubmissionService,
+    private authService: AuthService
   ) {
   }
 
@@ -37,6 +41,50 @@ export class PostComponent implements OnInit {
 
   showPost(postId: string): void {
     this.router.navigateByUrl(`/posts/${postId}`)
+  }
+
+  upvotePost(post: string): void {
+    // set the vote type to upvote
+    // set the username to the logged in user
+    const username = this.authService.getLoggedInUsername() ?? '';
+  
+    const voteRequest: VoteRequest = {
+      voteType: "UPVOTE",
+      voterUsername: username,
+      post: post
+    }
+  
+    this.postService.vote(voteRequest).subscribe({
+      next: (response) => {
+        console.log("upvoted");
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log("error");
+        console.error(error);
+      }
+    })
+  }
+
+  downvotePost(post: string): void {
+    // set the vote type to downvote
+    // set the username to the logged in user
+    const username = this.authService.getLoggedInUsername() ?? '';
+  
+    const voteRequest: VoteRequest = {
+      voteType: "DOWNVOTE",
+      voterUsername: username,
+      post: post
+    }
+  
+    this.postService.vote(voteRequest).subscribe({
+      next: (response) => {
+        console.log("downvoted");
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log("error");
+        console.error(error);
+      }
+    })
   }
 
 }

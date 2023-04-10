@@ -19,4 +19,8 @@ export class NotificationService {
   public getNotificationsOfUser(username: string): Observable<Notification[]> {
     return this.http.get<Notification[]>(this.apiUrl+`/hn-notification/notifications/users/${username}`);
   }
+
+  public readNotification(notificationId: number): Observable<Notification> {
+    return this.http.put<Notification>(this.apiUrl+`/hn-notification/notifications/${notificationId}`, null)
+  }
 }
