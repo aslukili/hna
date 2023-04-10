@@ -64,7 +64,7 @@ export class CommentFormComponent implements OnInit {
         next: (response: Comment) => {
           console.log(response);
           console.log("worked");
-          this.router.navigateByUrl(`posts/${postId}`);
+          window.location.reload();
         },
         error: (error: HttpErrorResponse) => {
           console.error("an error happened");
