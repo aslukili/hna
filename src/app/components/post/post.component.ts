@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   constructor(
     private router: Router,
     private postService: SubmissionService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
   }
 
@@ -87,4 +87,6 @@ export class PostComponent implements OnInit {
     })
   }
 
+
+  
 }

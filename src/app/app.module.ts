@@ -30,7 +30,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 import { SubmitFormComponent } from './components/submit-form/submit-form.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NotificationComponent } from './components/notification/notification.component';
-
+import { TimeagoFixPipe } from './pipes/time-ago-fix.pipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { NotificationComponent } from './components/notification/notification.co
     CommentFormComponent,
     SubmitFormComponent,
     UserProfileComponent,
-    NotificationComponent
+    NotificationComponent,
+    TimeagoFixPipe,    
   ],
   imports: [
     BrowserModule,

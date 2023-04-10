@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit{
           console.log("logged in");
           console.log(response.token);
           this.authService.storeTokenInLocalStorage(response.token)
-          this.router.navigateByUrl('profile');
+          this.router.navigateByUrl('home');
         },
         error: (httpErrorResponse: HttpErrorResponse) => {
           console.log("an error happened!");
@@ -68,5 +68,4 @@ export class LoginComponent implements OnInit{
       })
     )
   }
-
 }
