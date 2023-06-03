@@ -41,6 +41,7 @@ export class NotificationComponent implements OnInit {
       next: (notification: Notification) => {
         console.log("readed");
         console.log(notification);
+        window.location.reload();
       },
       error: (error: HttpErrorResponse) => {
         console.log("error");
